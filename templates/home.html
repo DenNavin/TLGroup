@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <table class="posttable">
+        <tr class="firststr">
+            <td>Имя пользователя</td>
+            <td>Тема поста</td>
+            <td>Текст поста</td>
+        </tr>
+        {% for post in object_list %}
+        <tr>
+            <td>{{ post.userId }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.body }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
