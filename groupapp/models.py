@@ -33,7 +33,7 @@ class Address(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{0} {1}'.format(self.street, self.city)
+        return '{0} {1} {2}'.format(self.suite, self.street, self.city)
 
 
 class Post(models.Model):
