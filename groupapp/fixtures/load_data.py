@@ -20,8 +20,8 @@ for i in response_data2:
     }
 
     for_user = {
-        'pk': i['id'],
-        'model': 'groupapp.user',
+        'pk': i['id']+1,
+        'model': 'groupapp.CustomUser',
         'fields':
             {
             'name': i['name'],
@@ -43,7 +43,7 @@ for i in response_data2:
             'zipcode': i['address']['zipcode'],
             'latitude': i['address']['geo']['lat'],
             'longitude': i['address']['geo']['lng'],
-            'user_id': i['id']
+            'user_id': i['id']+1
         }
     }
     list_address.append(for_address)
@@ -69,7 +69,7 @@ for q in response_post2:
         'pk': q['id'],
         'model': 'groupapp.post',
         'fields': {
-            'userId': q['userId'],
+            'userId': q['userId']+1,
             'title': q['title'],
             'body': q['body']
         }

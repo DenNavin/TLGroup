@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 class Company(models.Model):
@@ -11,10 +12,20 @@ class Company(models.Model):
         return self.name
 
 
-class User(models.Model):
+# class User(models.Model):
+#     name = models.CharField(max_length=150)
+#     username = models.CharField(max_length=150)
+#     email = models.EmailField()
+#     phone = models.CharField(max_length=30)
+#     website = models.CharField(max_length=300)
+#     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+#
+#     def __str__(self):
+#         return self.name
+
+
+class CustomUser(AbstractUser):
     name = models.CharField(max_length=150)
-    username = models.CharField(max_length=150)
-    email = models.EmailField()
     phone = models.CharField(max_length=30)
     website = models.CharField(max_length=300)
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
@@ -30,14 +41,14 @@ class Address(models.Model):
     zipcode = models.CharField(max_length=200)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_id = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return '{0} {1} {2}'.format(self.suite, self.street, self.city)
 
 
 class Post(models.Model):
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     title = models.CharField(max_length=500)
     body = models.TextField()
 
