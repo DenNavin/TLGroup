@@ -6,22 +6,9 @@ class Company(models.Model):
     name = models.CharField(max_length=150)
     catchPhrase = models.CharField(max_length=500)
     bs = models.CharField(max_length=500)
-    # user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
-
-
-# class User(models.Model):
-#     name = models.CharField(max_length=150)
-#     username = models.CharField(max_length=150)
-#     email = models.EmailField()
-#     phone = models.CharField(max_length=30)
-#     website = models.CharField(max_length=300)
-#     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
-#
-#     def __str__(self):
-#         return self.name
 
 
 class CustomUser(AbstractUser):
