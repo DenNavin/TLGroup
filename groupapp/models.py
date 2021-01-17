@@ -11,6 +11,10 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Компания'
+        verbose_name_plural = 'Компании'
+
 
 class CustomUser(AbstractUser):
     name = models.CharField(max_length=150)
@@ -67,12 +71,14 @@ if not Company.objects.filter(name=response_users_data[0]['company']['name']).ex
     test_save_customer.save()
 
 
-#save_data_user = CustomUser(name=response_users_data[0]['name'],
-#                            phone=response_users_data[0]['phone'],
-#                            website=response_users_data[0]['website'])
-#save_data_user.save()
+save_data_user = CustomUser(name=response_users_data[0]['name'],
+                            username=response_users_data[0]['username'],
+                            email=response_users_data[0]['email'],
+                            phone=response_users_data[0]['phone'],
+                            website=response_users_data[0]['website'])
+save_data_user.save()
 
-test = CustomUser.objects.get(pk=15)
+test = CustomUser.objects.get(pk=16)
 test2 = Company.objects.get(name=response_users_data[0]['company']['name'])
 test.company = test2
 test.save()
