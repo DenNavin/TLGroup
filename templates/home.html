@@ -8,12 +8,12 @@
             <td>Тема поста</td>
             <td>Текст поста</td>
         </tr>
-        {% for post in object_list %}
-        <tr>
-            <td>{{ post.userId }}</td>
-            <td>{{ post.title }}</td>
-            <td>{{ post.body }}</td>
-        </tr>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.userId }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.body }}</td>
+            </tr>
         {% endfor %}
     </table>
 {% endblock content %}

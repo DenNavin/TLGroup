@@ -1,12 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import ListView
-
+#from rest_framework import request
 from .models import Post
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = 'home.html'
+def PostListView(request):
+    posts = Post.objects.all()
+    return render(request, 'home.html', {'posts': posts})
 
 
 
