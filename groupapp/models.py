@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from . load_data import response_users_data, response_posts_data
+#from tlgroup.scripts.load_data import response_users_data
 
 
 class Company(models.Model):
@@ -62,38 +62,3 @@ class Customer(models.Model):
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
-
-
-if not Company.objects.filter(name=response_users_data[0]['company']['name']).exists():
-    test_save_customer = Company(name=response_users_data[0]['company']['name'],
-                                 catchPhrase=response_users_data[0]['company']['catchPhrase'],
-                                 bs=response_users_data[0]['company']['bs'])
-    test_save_customer.save()
-
-
-save_data_user = CustomUser(name=response_users_data[0]['name'],
-                            username=response_users_data[0]['username'],
-                            email=response_users_data[0]['email'],
-                            phone=response_users_data[0]['phone'],
-                            website=response_users_data[0]['website'])
-save_data_user.save()
-
-test = CustomUser.objects.get(pk=16)
-test2 = Company.objects.get(name=response_users_data[0]['company']['name'])
-test.company = test2
-test.save()
-
-
-
-#============================================
-#for user_data in response_users_data:
-#    save_data_company = Company(name=user_data['company']['name'],
-#                             catchPhrase=user_data['company']['catchPhrase'],
-#                             bs=user_data['company']['catchPhrase'])
-#    save_data_company.save()
-#
-#    save_data_user = CustomUser(name=user_data['name'],
-#                                phone=user_data['phone'],
-#                                website=user_data['website'],
-#                                company=)
-#    save_data_user.save()
