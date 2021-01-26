@@ -26,3 +26,4 @@ def run():
         test2 = Company.objects.get(name=user_data['company']['name'])
         test.company = test2
         test.save()
+
