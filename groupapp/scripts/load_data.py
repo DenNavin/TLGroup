@@ -1,7 +1,6 @@
 import requests
 from ..models import Company, CustomUser
 
-
 users_data = requests.get('http://jsonplaceholder.typicode.com/users')
 response_users_data = users_data.json()
 
