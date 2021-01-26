@@ -17,13 +17,17 @@ class Company(models.Model):
 
 
 class CustomUser(AbstractUser):
-    name = models.CharField(max_length=150)
+    # name = models.CharField(max_length=150)
     phone = models.CharField(max_length=30)
     website = models.CharField(max_length=300)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.username
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
 
 class Address(models.Model):
@@ -38,6 +42,9 @@ class Address(models.Model):
     def __str__(self):
         return '{0} {1} {2}'.format(self.suite, self.street, self.city)
 
+    class Meta:
+        verbose_name = 'Адрес'
+        verbose_name_plural = 'Адреса'
 
 class Post(models.Model):
     userId = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
