@@ -17,7 +17,6 @@ class Company(models.Model):
 
 
 class CustomUser(AbstractUser):
-    # name = models.CharField(max_length=150)
     phone = models.CharField(max_length=30)
     website = models.CharField(max_length=300)
     company = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
