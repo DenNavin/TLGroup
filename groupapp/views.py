@@ -26,6 +26,17 @@ class CustomUserView(APIView):
 
 
 class CustomUserIDView(APIView):
+    def get_object(self, pk):
+        try:
+            return CustomUser.objects.get(pk=pk)
+        except CustomUser.DoesNotExist:
+            raise CustomUser
+
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(CustomUser.objects.all(), pk=pk)
+        serializer = CustomUserSerializer(user)
+        return Response(serializer.data)
+
     def put(self, request, pk):
         customuser = get_object_or_404(CustomUser.objects.all(), pk=pk)
         data = request.data.get('customuser')
@@ -45,7 +56,7 @@ class CustomUserIDView(APIView):
 class Company(APIView):
     def get(self, request):
         company = Company.objects.all()
-        serializer = CompanySerializer(Company, many=True)
+        serializer = CompanySerializer(company, many=True)
 
         return Response({'Company': serializer.data})
 
