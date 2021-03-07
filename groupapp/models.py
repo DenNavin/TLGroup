@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-#from tlgroup.scripts.load_data import response_users_data
+
 
 
 class Company(models.Model):
