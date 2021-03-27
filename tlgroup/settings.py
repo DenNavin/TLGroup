@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'channels',
     'rest_framework',
     'groupapp',
 ]
@@ -125,3 +126,5 @@ AUTH_USER_MODEL = 'groupapp.CustomUser'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+ASGI_APPLICATION = 'tlgroup.asgi.application'

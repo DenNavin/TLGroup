@@ -8,6 +8,15 @@ from .models import Post, CustomUser
 from .serializers import CustomUserSerializer, CompanySerializer
 
 
+def index(request):
+    return render(request, 'chat/index.html')
+
+def room(request, room_name):
+    return render(request, 'chat/room.html', {
+        'room_name': room_name
+    })
+
+
 class CustomUserView(APIView):
 
     def get(self, request):
